@@ -17,7 +17,7 @@ char *read_user_input(void)
 	{
 		if (feof(stdin))
 		{
-			printf("\n");
+			printf("%s\n", input);
 			free(input);
 			return (NULL);
 		}

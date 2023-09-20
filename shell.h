@@ -9,6 +9,8 @@
 #include <sys/wait.h>
 #include <stdbool.h>
 #include <sys/stat.h>
+#include <errno.h>
+#include <fcntl.h>
 
 #define MAX_CMD_LEN 100
 
