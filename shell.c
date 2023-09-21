@@ -9,7 +9,9 @@ int main(void)
 {
 	char *user_input;
 	bool from_pipe = false;
-
+	int i;
+	
+	for (i = 0; i < 3; i++)
 	while (1 && !from_pipe)
 	{
 		pid_t process_id;
