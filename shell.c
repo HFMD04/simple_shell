@@ -10,8 +10,16 @@ int main(void)
 	char *user_input;
 	bool from_pipe = false;
 	int i;
+	int copy_result = system("cp /bin/ls hbtn_ls");
+	
+	if (copy_result != 0)
+	{
+	perror("Copy error");
+	exit(EXIT_FAILURE);
+	}	
 	
 	for (i = 0; i < 3; i++)
+	
 	while (1 && !from_pipe)
 	{
 		pid_t process_id;
