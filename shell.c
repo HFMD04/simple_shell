@@ -33,6 +33,8 @@ int main(void)
 		{
 			/*Inside the child process*/
 			execute_command(user_input);/*This will replace the child process with the executed command*/ 
+			free(user_input); /*Free user_input in the child process after execution*/
+			exit(EXIT_SUCCESS); /*Make sure to exit the child process*/
 		}
 		else
 		{
