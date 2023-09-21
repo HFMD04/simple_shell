@@ -7,19 +7,18 @@
  */
 char *read_user_input(void)
 {
-	ssize_t bytes; /*Correct variable name*/
+	ssize_t bytes;
 	char *input = NULL;
 	size_t buffer_size = 0;
-
+	
 	write(STDOUT_FILENO, "$ ", 2);
 	bytes = getline(&input, &buffer_size, stdin);
-	if ((bytes == -1))
+	if (bytes <= 0)
 	{
 		if (feof(stdin))
 		{
-			printf("%s\n", input);
 			free(input);
-			return (NULL);
+			 exit(EXIT_FAILURE);
 		}
 		else
 		{
@@ -27,6 +26,11 @@ char *read_user_input(void)
 			free(input);
 			return (NULL);
 		}
+	}
+	
+	if (input == NULL)
+	{
+		return (NULL);
 	}
 	input[strcspn(input, "\n")] = '\0';
 	return (input);

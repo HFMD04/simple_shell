@@ -11,6 +11,7 @@
 #include <sys/stat.h>
 #include <errno.h>
 #include <fcntl.h>
+#include <ctype.h>
 
 #define MAX_CMD_LEN 100
 
