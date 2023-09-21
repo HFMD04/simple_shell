@@ -10,7 +10,7 @@ char *read_user_input(void)
 	ssize_t bytes;
 	char *input = NULL;
 	size_t buffer_size = 0;
-	
+
 	write(STDOUT_FILENO, "$ ", 2);
 	bytes = getline(&input, &buffer_size, stdin);
 	if (bytes <= 0)
@@ -27,7 +27,7 @@ char *read_user_input(void)
 			return (NULL);
 		}
 	}
-	
+
 	if (input == NULL)
 	{
 		return (NULL);
