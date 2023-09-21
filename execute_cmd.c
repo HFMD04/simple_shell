@@ -8,7 +8,6 @@
 void execute_command(char *command)
 {
 	char *args[2];
-
 	args[0] = command;
 	args[1] = NULL;
 
@@ -18,6 +17,4 @@ void execute_command(char *command)
 		free(command);
 		exit(EXIT_FAILURE);
 	}
-	/* Free the command memory before calling execve */
-	free(command);
 }

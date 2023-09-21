@@ -31,11 +31,12 @@ int main(void)
 		}
 		else if (process_id == 0)
 		{
-			execute_command(user_input);
+			/*Inside the child process*/
+			execute_command(user_input);/*This will replace the child process with the executed command*/ 
 		}
 		else
 		{
-			waitpid(process_id, NULL, 0);
+			waitpid(process_id, NULL, 0);/*Wait for the child process to complete*/
 		}
 		free(user_input);
 	}
