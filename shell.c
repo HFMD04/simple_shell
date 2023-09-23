@@ -74,12 +74,17 @@ void execute_shell(void)
 {
 	char *user_input;
 	pid_t process_id;
+	char **tokens = NULL;
+	int i = 0;
+	int argc;
+
 	while (1)
 
 	{
 		user_input = read_user_input();
 		if (user_input == NULL)
 	{
+		free(user_input);
 		exit(EXIT_SUCCESS);
 	}
 		process_id = fork();
@@ -91,7 +96,19 @@ void execute_shell(void)
 		}
 		else if (process_id == 0)
 		{
-			execute_command(user_input);
+		        
+			user_input[strcspn(user_input, "\n")] = '\0';
+
+        		
+			tokens = split_string(user_input, " \t\n", &argc);
+
+			execute_command(tokens);
+			for (i = 0; i < argc; i++)
+			{
+				printf("Token %d: %s\n", i, tokens[i]);
+				free(tokens[i]);
+			}
+			free(tokens);
 			free(user_input);
 			exit(EXIT_SUCCESS);
 		}
@@ -100,5 +117,7 @@ void execute_shell(void)
 			waitpid(process_id, NULL, 0);
 			free(user_input);
 		}
+		printf("%s\n", user_input);
+		free(user_input);
 	}
 }

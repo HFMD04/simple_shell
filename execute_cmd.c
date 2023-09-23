@@ -5,17 +5,12 @@
  *
  * @command: The command to execute.
  */
-void execute_command(char *command)
+void execute_command(char **command)
 {
-	char *args[2];
 
-	args[0] = command;
-	args[1] = NULL;
-
-	if (execve(command, args, environ) == -1)
+	if (execve(command[0], command, environ) == -1)
 	{
 		perror("Command execution error");
-		free(command);
 		exit(EXIT_FAILURE);
 	}
 }

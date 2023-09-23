@@ -18,5 +18,5 @@
 extern char **environ;
 char **split_string(char *input, const char *delimiter, int *argc);
 char *read_user_input(void);
-void execute_command(char *command);
+void execute_command(char **command);
 #endif /* SHELL_H */

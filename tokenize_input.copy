@@ -1,0 +1,44 @@
+#include "shell.h"
+
+char **tokenize_input(char *input)
+{
+  char *token = NULL;
+  tmp = NULL;
+	int cpt = 0;
+i = 0;  
+    if (!input)
+	
+    return (NULL);
+tmp = _strdup(input);
+token = strtok(tmp, DELIM);
+if (token == NULL)
+{
+free(input), input = NULL;
+free(tmp), tmp = NULL
+return (NULL);
+
+while (token)
+{
+cpt++;
+token = strtok(tmp, DELIM);
+}
+free(tmp), tmp = NULL;
+
+command = malloc(sizeof(char *) * (cpt + 1));
+ if (!command)
+{
+free(input);
+return (NULL);
+}
+token = strtok(input, DELIM);
+while (token)
+ {
+  command[i] = token;
+token = strtok(NULL, DELIM);
+i++;
+}
+free(input);
+input = NULL;
+command[i] = NULL;
+return (command);
+}
